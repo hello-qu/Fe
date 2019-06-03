@@ -26,4 +26,25 @@
 
   > map / forEach / fliter 等均有此特性
 
+  `map` 简单的Polyfill
+  
+  ```js
+  Array.prototype.MockMap = function(fn){
+  	const list = this;
+  	if(!Array.isArray(list)){
+  		throw Error('must be Array');
+  	} 
+  	let resultList = []
+  	let item,index,arr;
+  	for(var i = 0;i<list.length;i++){
+  		index = i;
+  		item = list[i]
+  		arr = this;
+  		resultList.push(fn.call(this,item,index,arr))
+  	}
+  	return resultList;
+  
+  }
+  ```
+  
   
